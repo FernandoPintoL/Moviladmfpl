@@ -1,7 +1,8 @@
-import 'package:proyectoadmfpl/Controller/IntArticuloController.dart';
-import 'package:proyectoadmfpl/Controller/RequestController.dart';
-import 'package:proyectoadmfpl/Model/IntArticulo.dart';
-import 'package:proyectoadmfpl/Model/IntArticuloCodBarra.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:proyectoadmfpl/Controller/intarticulo_controller.dart';
+import 'package:proyectoadmfpl/Controller/request_controller.dart';
+import 'package:proyectoadmfpl/Model/intarticulo.dart';
+import 'package:proyectoadmfpl/Model/intarticulocodbarra.dart';
 import 'dart:convert' as convert;
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:flutter/services.dart';
@@ -73,7 +74,7 @@ class IntArticuloCodBarraController{
       dynamic response = await requestController.requestPost("api/articulo/register/codbarra", {
         "artId" :  artId.toString(),
         "codBarra" : codBarra});
-      print(response.body);
+      debugPrint(response.body);
       respuesta['status'] = response.statusCode;
       final parsed = convert.jsonDecode(response.body);
       if(response.statusCode == 200){
@@ -95,7 +96,7 @@ class IntArticuloCodBarraController{
       dynamic response = await requestController.requestPost("api/articulo/update/codbarra", {
         "artId" :  tadId.toString(),
         "codBarra" : codBarra});
-      print(response.body);
+      debugPrint(response.body);
       respuesta['status'] = response.statusCode;
       final parsed = convert.jsonDecode(response.body);
       if(response.statusCode == 200){

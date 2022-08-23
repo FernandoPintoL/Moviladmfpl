@@ -1,7 +1,6 @@
 import 'dart:math';
-import 'dart:ui';
 import 'package:flutter/cupertino.dart';
-import 'package:proyectoadmfpl/Vista/Themes/Config.dart';
+import 'package:proyectoadmfpl/Vista/Themes/config.dart';
 
 class BackgroundPainter extends CustomPainter {
   final bluePaint;

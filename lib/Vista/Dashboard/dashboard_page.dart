@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:proyectoadmfpl/Vista/Account/Account_Page.dart';
-import 'package:proyectoadmfpl/Vista/Dashboard/Dashboard_controller.dart';
-import 'package:proyectoadmfpl/Vista/Home/Home_page.dart';
-import 'package:proyectoadmfpl/Vista/Themes/Components/Buscador.dart';
-import 'package:proyectoadmfpl/Vista/Themes/Config.dart';
+import 'package:proyectoadmfpl/Vista/Account/account_page.dart';
+import 'package:proyectoadmfpl/Vista/Dashboard/dashboard_controller.dart';
+import 'package:proyectoadmfpl/Vista/Home/home_page.dart';
+import 'package:proyectoadmfpl/Vista/Themes/Components/buscador.dart';
+import 'package:proyectoadmfpl/Vista/Themes/config.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:flutter/services.dart';
 

@@ -3,34 +3,43 @@ import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
 import 'dart:async' show Future;
+
 class DatabaseHelper{
   static const _databaseName = "admfpl.db";
   static const _databaseVersion = 1;
+
 
   // make this a singleton class
   DatabaseHelper._privateConstructor();
   static final DatabaseHelper instance = DatabaseHelper._privateConstructor();
 
   // only have a single app-wide reference to the database
-  static Database? _database;
+  Database? _database;
+
+  // Directory documentsDirectory = await getApplicationDocumentsDirectory();
+  Directory? documentsDirectory;
+  // String path = join(documentsDirectory.path, _databaseName);
+  var path = "";
 
   Future<Database> get database async {
-    if (_database != null) return _database!;
+    if (_database != null) {
+      return _database!;
+    }
     // lazily instantiate the db the first time it is accessed
     _database = await _initDatabase();
     return _database!;
   }
 
   _initDatabase() async {
-    Directory documentsDirectory = await getApplicationDocumentsDirectory();
-    String path = join(documentsDirectory.path, _databaseName);
+    documentsDirectory = await getApplicationDocumentsDirectory();
+    path = join(documentsDirectory!.path, _databaseName);
     return await openDatabase(path,
         version: _databaseVersion,
         onCreate: _onCreate);
   }
 
   Future _onCreate(Database db, int version) async {
-    await db.execute('CREATE TABLE empresa (id INTEGER PRIMARY KEY, nombre TEXT NOT NULL, url TEXT NOT NULL, url)');
+    await db.execute('CREATE TABLE empresa (id INTEGER PRIMARY KEY, nombre TEXT NOT NULL, url TEXT NOT NULL)');
   }
 
   Future<int> insert(String table, Map<String, dynamic> values) async {

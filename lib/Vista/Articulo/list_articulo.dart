@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:proyectoadmfpl/Model/IntArticulo.dart';
-import 'package:proyectoadmfpl/Vista/Articulo/ArticuloDetails.dart';
-import 'package:proyectoadmfpl/Vista/Dashboard/Dashboard_controller.dart';
+import 'package:proyectoadmfpl/Model/intarticulo.dart';
+import 'package:proyectoadmfpl/Vista/Articulo/articulo_details.dart';
+import 'package:proyectoadmfpl/Vista/Dashboard/dashboard_controller.dart';
+
+//ignore: must_be_immutable
 class ListArticulo extends StatefulWidget {
   DashboardController dashboardController;
   List<IntArticulo> listArticulos;
@@ -46,7 +48,7 @@ class _ListArticuloState extends State<ListArticulo> {
                                 onArticuloAdded: () {
                                   /*articuloProvider
                                       .addArticuloCarrito(articulo);*/
-                                  print("para agregar en el carrito");
+                                  debugPrint("para agregar en el carrito");
                                 }));
                       }));
                 },

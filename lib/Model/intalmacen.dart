@@ -64,5 +64,4 @@ class IntAlmacen{
   set setAlmFechaCambio(String value) => almFechaCambio = value;
   set setAlmHabilitado(String value) => almHabilitado = value;
   set setSucId(String value) => sucId = value;
-
 }

@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:proyectoadmfpl/Vista/Articulo/ListArticulo.dart';
-import 'package:proyectoadmfpl/Vista/Dashboard/Dashboard_controller.dart';
-import 'package:proyectoadmfpl/Vista/Themes/Components/HeaderWithSearchBox.dart';
-
+import 'package:proyectoadmfpl/Vista/Articulo/list_articulo.dart';
+import 'package:proyectoadmfpl/Vista/Dashboard/dashboard_controller.dart';
+import 'package:proyectoadmfpl/Vista/Themes/Components/header_with_search_box.dart';
+//ignore: must_be_immutable
 class HomePage extends StatefulWidget {
   DashboardController? dashboardController;
 

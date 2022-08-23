@@ -1,6 +1,7 @@
 import 'dart:convert' as convert;
-import 'package:proyectoadmfpl/Controller/RequestController.dart';
-import 'package:proyectoadmfpl/Model/IntArticulo.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:proyectoadmfpl/Controller/request_controller.dart';
+import 'package:proyectoadmfpl/Model/intarticulo.dart';
 
 class IntArticuloController{
   RequestController requestController = RequestController();
@@ -23,7 +24,6 @@ class IntArticuloController{
       }
       return intArticulo;
     }catch(error){
-      print(error);
       return intArticulo;
     }
   }
@@ -42,7 +42,7 @@ class IntArticuloController{
       respuesta['data'] = parsed;
       return respuesta;
     }catch(error){
-      print(error);
+      debugPrint(error.toString());
       return intArticulo;
     }
   }
@@ -51,7 +51,7 @@ class IntArticuloController{
     IntArticulo intArticulo = IntArticulo();
     try{
       dynamic response = await requestController.requestPost("api/articulo/update", articulo.toMap());
-      print(response.body);
+      debugPrint(response.body);
       respuesta['status'] = response.statusCode;
       final parsed = convert.jsonDecode(response.body);
       if(response.statusCode == 200){
@@ -62,7 +62,7 @@ class IntArticuloController{
       respuesta['data'] = parsed;
       return respuesta;
     }catch(error){
-      print(error);
+      debugPrint(error.toString());
       return intArticulo;
     }
   }
@@ -71,6 +71,7 @@ class IntArticuloController{
     List<IntArticulo> listArticulo = [];
     try{
       dynamic response = await requestController.requestPost("api/articulo/query", {'query' :  query});
+      debugPrint(response.body);
       respuesta['status'] = response.statusCode;
       final parsed = convert.jsonDecode(response.body);
       if(response.statusCode == 200){

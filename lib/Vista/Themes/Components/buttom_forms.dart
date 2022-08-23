@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:proyectoadmfpl/Vista/Themes/Config.dart';
+import 'package:proyectoadmfpl/Vista/Themes/config.dart';
+
 class ButtomForm extends StatelessWidget {
   final String label;
   final VoidCallback onPressed;

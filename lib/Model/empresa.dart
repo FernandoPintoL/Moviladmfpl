@@ -3,9 +3,9 @@ class Empresa{
   String? nombre, url;
 
   Empresa({
-    this.id = 0,
+    this.id = 1,
     this.nombre = "AdmFpl",
-    this.url = "http://192.168.1.14:8000/"
+    this.url = "http://192.168.1.9:8000/"
   });
 
   Empresa.fromMap(Map<dynamic, dynamic> map){

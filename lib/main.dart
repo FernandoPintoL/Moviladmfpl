@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:proyectoadmfpl/Vista/Routes/App_Pages.dart';
-import 'package:proyectoadmfpl/Vista/Routes/App_Routes.dart';
-import 'package:proyectoadmfpl/Vista/Themes/App_Theme.dart';
-import 'package:proyectoadmfpl/Vista/Themes/Config.dart';
+import 'package:proyectoadmfpl/Vista/Routes/app_pages.dart';
+import 'package:proyectoadmfpl/Vista/Routes/app_routes.dart';
+import 'package:proyectoadmfpl/Vista/Themes/app_theme.dart';
+import 'package:proyectoadmfpl/Vista/Themes/config.dart';
 
 void main() {
   runApp(const MyApp());

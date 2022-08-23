@@ -1,7 +1,7 @@
-import 'package:proyectoadmfpl/Controller/RequestController.dart';
+import 'package:proyectoadmfpl/Controller/request_controller.dart';
 import 'dart:convert' as convert;
 
-import 'package:proyectoadmfpl/Model/IntExistencia.dart';
+import 'package:proyectoadmfpl/Model/intexistencia.dart';
 
 class IntExistenciaController{
   RequestController requestController = RequestController();

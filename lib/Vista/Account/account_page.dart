@@ -2,11 +2,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:proyectoadmfpl/Controller/EmpresaLocalController.dart';
-import 'package:proyectoadmfpl/Model/Empresa.dart';
-import 'package:proyectoadmfpl/Vista/Dashboard/Dashboard_controller.dart';
-import 'package:proyectoadmfpl/Vista/Themes/Components/ButtomForms.dart';
-import 'package:proyectoadmfpl/Vista/Themes/Components/FormTextField.dart';
+import 'package:proyectoadmfpl/Controller/empresa_local_controller.dart';
+import 'package:proyectoadmfpl/Model/empresa.dart';
+import 'package:proyectoadmfpl/Vista/Dashboard/dashboard_controller.dart';
+import 'package:proyectoadmfpl/Vista/Themes/Components/buttom_forms.dart';
+import 'package:proyectoadmfpl/Vista/Themes/Components/form_text_field.dart';
 
 class AccountPage extends StatefulWidget {
   DashboardController? dashboardController;
@@ -23,6 +23,11 @@ class _AccountPageState extends State<AccountPage> {
   final TextEditingController _nombre = TextEditingController();
   final TextEditingController _url = TextEditingController();
   Empresa empresaAux = Empresa();
+
+  void cargarDatos() async{
+    
+  }
+
   void actulizarEmpresa(int id) async{
     setState(() {
       isLoading = true;
@@ -49,6 +54,8 @@ class _AccountPageState extends State<AccountPage> {
         body: GetBuilder<DashboardController>(
             init: widget.dashboardController,
             builder: (controller) {
+              _nombre.text = controller.empresa.getNombre;
+              _url.text = controller.empresa.getUrl;
               return Center(
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,

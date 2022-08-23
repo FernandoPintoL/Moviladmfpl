@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:proyectoadmfpl/Vista/Dashboard/Dashboard_controller.dart';
-import 'package:proyectoadmfpl/Vista/Themes/Config.dart';
+import 'package:proyectoadmfpl/Vista/Dashboard/dashboard_controller.dart';
+import 'package:proyectoadmfpl/Vista/Themes/config.dart';
+//ignore: must_be_immutable
 class HeaderWithSearchBox extends StatefulWidget {
   DashboardController dashboardController;
   Size size;

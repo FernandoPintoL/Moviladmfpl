@@ -1,10 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:proyectoadmfpl/Controller/EmpresaLocalController.dart';
-import 'package:proyectoadmfpl/Controller/IntArticuloCodBarra.dart';
-import 'package:proyectoadmfpl/Controller/IntArticuloController.dart';
-import 'package:proyectoadmfpl/Controller/IntExistenciaController.dart';
-import 'package:proyectoadmfpl/Model/Empresa.dart';
-import 'package:proyectoadmfpl/Model/IntArticulo.dart';
+import 'package:proyectoadmfpl/Controller/empresa_local_controller.dart';
+import 'package:proyectoadmfpl/Controller/intarticulocodbarra_controller.dart';
+import 'package:proyectoadmfpl/Controller/intarticulo_controller.dart';
+import 'package:proyectoadmfpl/Controller/intexistencia_controller.dart';
+import 'package:proyectoadmfpl/Model/empresa.dart';
+import 'package:proyectoadmfpl/Model/intarticulo.dart';
 
 class DashboardController extends GetxController{
   Empresa empresa = Empresa();
@@ -30,8 +31,8 @@ class DashboardController extends GetxController{
   }
   
   void cargarArticulos() async{
-    dynamic respuesta = await intArticuloController.getQueryArticulo("");
     url = await empresaLocalController.getUrl();
+    dynamic respuesta = await intArticuloController.getQueryArticulo("");
     empresa =  await EmpresaLocalController().getFirstEmpresa();
     if(respuesta['status'] == 200){
       listArticulos = respuesta['data'];
@@ -62,7 +63,7 @@ class DashboardController extends GetxController{
     isLoading = true;
     update();
     dynamic respuesta = await intArticuloCodBarraController.getCodBarraArticulo(codBarra);
-    print(respuesta);
+    debugPrint(respuesta);
     if(respuesta['status'] == 200){
       listArticulos = respuesta['data'];
     }else{

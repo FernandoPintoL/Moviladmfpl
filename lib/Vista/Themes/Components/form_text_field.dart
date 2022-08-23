@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
-import 'package:proyectoadmfpl/Vista/Themes/Config.dart';
+
 class Vistas {
   MultiValidator defaultValidator = MultiValidator([]);
   MultiValidator nameValidator = MultiValidator([ // tipo = 0
