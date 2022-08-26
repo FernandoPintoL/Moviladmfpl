@@ -12,14 +12,28 @@ class RequestController {
     try {
       String url = await empresa.getUrl();
       Uri urlUri = Uri.parse("$url/$urlInc");
-      debugPrint(urlUri.toString());
       var response = await http.post(urlUri,
           headers: {'Content-Type': 'application/json'},
           body: convert.jsonEncode(data));
       return response;
     } catch (error) {
+      debugPrint(error.toString());
       respuesta['data'] = error;
-      return respuesta;
+      return error;
+    }
+  }
+
+  Future<dynamic> requestGet(String urlInc) async {
+    try {
+      String url = await empresa.getUrl();
+      Uri urlUri = Uri.parse("$url/$urlInc");
+      var response =
+          await http.get(urlUri, headers: {'Content-Type': 'application/json'});
+      return response;
+    } catch (error) {
+      debugPrint(error.toString());
+      respuesta['data'] = error;
+      return error;
     }
   }
 }

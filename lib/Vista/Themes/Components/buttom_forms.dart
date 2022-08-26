@@ -28,7 +28,7 @@ class ButtomForm extends StatelessWidget {
                 child: Text(label, style: const TextStyle(
                     fontWeight: FontWeight.w800,
                     color: Palette.darkBlue,
-                    fontSize: 16
+                    fontSize: 20
                 )),
               ),
               RoundContinuedButton(onPressed : onPressed),

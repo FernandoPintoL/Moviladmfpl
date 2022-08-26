@@ -15,75 +15,56 @@ class IntArticuloController{
 
   Future<IntArticulo> show(int artId) async {
     IntArticulo intArticulo = IntArticulo();
-    try{
-      dynamic response = await requestController.requestPost("api/articulo/show", {'artId' :  artId.toString()});
-      if(response.statusCode == 200){
-        final parsed = convert.jsonDecode(response.body);
-        intArticulo = IntArticulo.fromMap(parsed);
-        return intArticulo;
-      }
-      return intArticulo;
-    }catch(error){
+    dynamic response = await requestController.requestPost("api/articulo/show", {'artId' :  artId.toString()});
+    if(response.statusCode == 200){
+      final parsed = convert.jsonDecode(response.body);
+      intArticulo = IntArticulo.fromMap(parsed);
       return intArticulo;
     }
+    return intArticulo;
   }
 
   Future<dynamic> registrar(IntArticulo articulo) async {
     IntArticulo intArticulo = IntArticulo();
-    try{
-      dynamic response = await requestController.requestPost("api/articulo/registar", articulo.toMap());
-      respuesta['status'] = response.statusCode;
-      final parsed = convert.jsonDecode(response.body);
-      if(response.statusCode == 200){
-        intArticulo = IntArticulo.fromMap(parsed);
-        respuesta['data'] = intArticulo;
-        return respuesta;
-      }
-      respuesta['data'] = parsed;
+    dynamic response = await requestController.requestPost("api/articulo/register", articulo.toMap());
+    print(response.body);
+    respuesta['status'] = response.statusCode;
+    final parsed = convert.jsonDecode(response.body);
+    if(response.statusCode == 200){
+      intArticulo = IntArticulo.fromMap(parsed);
+      respuesta['data'] = intArticulo;
       return respuesta;
-    }catch(error){
-      debugPrint(error.toString());
-      return intArticulo;
     }
+    respuesta['data'] = parsed;
+    return respuesta;
   }
 
   Future<dynamic> actualizar(IntArticulo articulo) async {
     IntArticulo intArticulo = IntArticulo();
-    try{
-      dynamic response = await requestController.requestPost("api/articulo/update", articulo.toMap());
-      debugPrint(response.body);
-      respuesta['status'] = response.statusCode;
-      final parsed = convert.jsonDecode(response.body);
-      if(response.statusCode == 200){
-        intArticulo = IntArticulo.fromMap(parsed);
-        respuesta['data'] = intArticulo;
-        return respuesta;
-      }
-      respuesta['data'] = parsed;
+    dynamic response = await requestController.requestPost("api/articulo/update", articulo.toMap());
+    debugPrint(response.body);
+    respuesta['status'] = response.statusCode;
+    final parsed = convert.jsonDecode(response.body);
+    if(response.statusCode == 200){
+      intArticulo = IntArticulo.fromMap(parsed);
+      respuesta['data'] = intArticulo;
       return respuesta;
-    }catch(error){
-      debugPrint(error.toString());
-      return intArticulo;
     }
+    respuesta['data'] = parsed;
+    return respuesta;
   }
 
   Future<dynamic> getQueryArticulo(String query) async {
     List<IntArticulo> listArticulo = [];
-    try{
-      dynamic response = await requestController.requestPost("api/articulo/query", {'query' :  query});
-      debugPrint(response.body);
-      respuesta['status'] = response.statusCode;
-      final parsed = convert.jsonDecode(response.body);
-      if(response.statusCode == 200){
-        listArticulo = parseArticulos(response.body);
-        respuesta['data'] = listArticulo;
-        return respuesta;
-      }
-      respuesta['data'] = parsed;
-      return respuesta;
-    }catch(error){
-      respuesta['data'] = error;
+    dynamic response = await requestController.requestPost("api/articulo/query", {'query' :  query});
+    respuesta['status'] = response.statusCode;
+    final parsed = convert.jsonDecode(response.body);
+    if(response.statusCode == 200){
+      listArticulo = parseArticulos(response.body);
+      respuesta['data'] = listArticulo;
       return respuesta;
     }
+    respuesta['data'] = parsed;
+    return respuesta;
   }
 }

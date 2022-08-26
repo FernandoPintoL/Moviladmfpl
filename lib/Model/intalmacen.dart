@@ -1,22 +1,20 @@
 class IntAlmacen{
-  late String almId;
-  late String almNombre;
-  String? dirId, lprId, galId, almFechaCambio, almHabilitado, sucId;
+  String? almId, almNombre, dirId, lprId, galId, almFechaCambio, almHabilitado, sucId;
 
   IntAlmacen({
-    required almId,
-    required almNombre,
-    dirId,
-    lprId,
-    galId,
-    almFechaCambio,
-    almHabilitado,
-    sucId
+    almId = "",
+    almNombre = "",
+    dirId = "",
+    lprId = "",
+    galId = "",
+    almFechaCambio = "",
+    almHabilitado = "",
+    sucId = ""
   });
 
-  IntAlmacen.fromMap(Map<String, dynamic> map) {
-    almId = map['almId'];
-    almNombre = map['almNombre'];
+  IntAlmacen.fromMap(Map<dynamic, dynamic> map) {
+    almId = map['almId'] ?? "";
+    almNombre = map['almNombre'] ?? "";
     dirId = map['dirId'] ?? "";
     lprId = map['lprId'] ?? "";
     galId = map['galId'] ?? "";
@@ -25,9 +23,9 @@ class IntAlmacen{
     sucId = map['sucId'] ?? "";
   }
 
-  factory IntAlmacen.fromJson(Map<String, dynamic> json) => IntAlmacen(
-      almId: json['almId'],
-      almNombre: json['almNombre'],
+  factory IntAlmacen.fromJson(Map<dynamic, dynamic> json) => IntAlmacen(
+      almId: json['almId'] ?? "",
+      almNombre: json['almNombre'] ?? "",
       dirId: json['dirId'] ?? "",
       lprId: json['lprId'] ?? "",
       galId: json['galId'] ?? "",
@@ -47,8 +45,8 @@ class IntAlmacen{
     "sucId" : sucId ?? ""
   };
 
-  String get getAlmId => almId;
-  String get getAlmNombre => almNombre;
+  String get getAlmId => almId!;
+  String get getAlmNombre => almNombre!;
   String get getDirId => dirId!;
   String get getLprId => lprId!;
   String get getGalId => galId!;

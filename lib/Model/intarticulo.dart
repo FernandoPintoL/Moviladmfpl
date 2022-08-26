@@ -4,7 +4,8 @@ class IntArticulo {
   double? artPrecioVenta, artPrecioVentaDos, artPrecioVentaTres;
   bool? artIsShop;
 
-  IntArticulo({artId = 0,
+  IntArticulo({
+    artId = 0,
     artNombre = "",
     artPrecioVenta = 0,
     artFraccionado = "N",
@@ -15,7 +16,7 @@ class IntArticulo {
     artIsShop = false});
 
   IntArticulo.fromMap(Map<dynamic, dynamic> map){
-    artId = map['artId'] == null ? 0 :int.tryParse(map['artId'].toString());
+    artId = map['artId'] == null ? 0 : int.tryParse(map['artId'].toString());
     artNombre = map['artNombre'] ?? "";
     artPrecioVenta = map['artPrecioVenta'] == null ? 0 :double.tryParse(map['artPrecioVenta'].toString());
     artPrecioVentaDos = map['artPrecioVentaDos'] == null ? 0 : double.tryParse(map['artPrecioVentaDos'].toString());

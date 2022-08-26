@@ -9,8 +9,8 @@ import 'app_routes.dart';
 
 class AppPages {
   static var list = [
-    GetPage(name: AppRoutes.HOME, page: () => HomePage(), binding: HomeBinding()),
-    GetPage(name: AppRoutes.ACCOUNT, page: () => AccountPage(), binding: AccountBinding()),
-    GetPage(name: AppRoutes.DASHBOARD, page: () => const DashboardPage(), binding: DashboardBinding()),
+    GetPage(name: AppRoutes.home, page: () => HomePage(), binding: HomeBinding()),
+    GetPage(name: AppRoutes.account, page: () => AccountPage(), binding: AccountBinding()),
+    GetPage(name: AppRoutes.dashboard, page: () => const DashboardPage(), binding: DashboardBinding()),
   ];
 }

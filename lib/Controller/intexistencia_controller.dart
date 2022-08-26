@@ -14,18 +14,13 @@ class IntExistenciaController{
   }
 
   Future<dynamic> getExistenciasArticulos(int artId) async {
-    try{
-      dynamic response = await requestController.requestPost("api/articulo/existencia", {'artId' :  artId.toString()});
-      if(response.statusCode == 200){
-        List<IntExistencia> existencias = parseArticuloExistencias(response.body);
-        respuesta['status'] = response.statusCode;
-        respuesta['data'] = existencias;
-        return respuesta;
-      }
-      return respuesta;
-    }catch(error){
-      respuesta['data'] = error;
+    dynamic response = await requestController.requestPost("api/articulo/existencia", {'artId' :  artId.toString()});
+    if(response.statusCode == 200){
+      List<IntExistencia> existencias = parseArticuloExistencias(response.body);
+      respuesta['status'] = response.statusCode;
+      respuesta['data'] = existencias;
       return respuesta;
     }
+    return respuesta;
   }
 }

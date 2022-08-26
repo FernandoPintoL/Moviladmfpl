@@ -14,12 +14,20 @@ class ArticuloDetails extends StatefulWidget {
   IntArticulo articulo;
   DashboardController dashboardController;
   final VoidCallback onArticuloAdded;
+  bool isShow;
+  bool isEditing;
+  bool isRegister;
+  bool isPostRegister;
 
   ArticuloDetails(
       {Key? key,
       required this.articulo,
       required this.dashboardController,
-      required this.onArticuloAdded})
+      required this.onArticuloAdded,
+      required this.isEditing,
+      required this.isRegister,
+      required this.isShow,
+      required this.isPostRegister})
       : super(key: key);
 
   @override
@@ -29,13 +37,10 @@ class ArticuloDetails extends StatefulWidget {
 class _ArticuloDetailsState extends State<ArticuloDetails> {
   GlobalKey<ScaffoldState> scaffoldKeyArticulo = GlobalKey<ScaffoldState>();
   String heroTag = '';
-  bool isEditing = false;
-  bool isRegister = false;
-  bool isShow = true;
 
   void changeEdit() {
     setState(() {
-      isShow = !isShow;
+      widget.isShow = !widget.isShow;
     });
   }
 
@@ -54,25 +59,25 @@ class _ArticuloDetailsState extends State<ArticuloDetails> {
         backgroundColor: Colors.white,
         appBar: AppBar(
           centerTitle: true,
-          title: Text(
-              "Cod Alternativo : ${widget.articulo.getArticuloId.toString()}",
-              style: const TextStyle(color: Colors.black45)),
+          // title: Text(
+          //     "Cod Alternativo : ${widget.articulo.getArticuloId.toString()}",
+          //     style: const TextStyle(color: Colors.black45)),
           backgroundColor: Colors.white,
           elevation: 0,
           leading: const BackButton(color: Colors.black),
           actions: [
-            IconButton(
+            widget.isPostRegister ? IconButton(
                 onPressed: changeEdit,
                 icon: const Icon(
                   CupertinoIcons.pencil_outline,
                   color: Colors.black,
-                ))
+                )) : const Icon(CupertinoIcons.slider_horizontal_below_rectangle)
           ],
         ),
         body: Padding(
           padding:
               const EdgeInsets.only(bottom: 18, top: 12, right: 12, left: 12),
-          child: isShow
+          child: widget.isShow
               ? DetailsArticulo(
                   articulo: widget.articulo,
                   heroTag: heroTag,
@@ -80,8 +85,9 @@ class _ArticuloDetailsState extends State<ArticuloDetails> {
                 )
               : RegisterEditArticulo(
                   scaffoldKey: scaffoldKeyArticulo,
-                  isEditing: true,
-                  isRegister: false,
+                  isEditing: widget.isEditing,
+                  isRegister: widget.isRegister,
+                  isPostRegister: widget.isPostRegister,
                   articulo: widget.articulo,
                 ),
         ));

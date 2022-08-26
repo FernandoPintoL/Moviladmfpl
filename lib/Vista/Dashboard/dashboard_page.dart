@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:proyectoadmfpl/Model/intarticulo.dart';
 import 'package:proyectoadmfpl/Vista/Account/account_page.dart';
+import 'package:proyectoadmfpl/Vista/Articulo/articulo_details.dart';
 import 'package:proyectoadmfpl/Vista/Dashboard/dashboard_controller.dart';
 import 'package:proyectoadmfpl/Vista/Home/home_page.dart';
 import 'package:proyectoadmfpl/Vista/Themes/Components/buscador.dart';
@@ -20,11 +22,13 @@ class _DashboardPageState extends State<DashboardPage> {
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   bool buscar = false;
   String _scanBarcode = 'Unknown';
-  void changeBuscar(){
+
+  void changeBuscar() {
     setState(() {
       buscar = !buscar;
     });
   }
+
   // Platform messages are asynchronous, so we initialize in an async method.
   Future<String> scanBarcodeNormal() async {
     String barcodeScanRes = "";
@@ -43,6 +47,7 @@ class _DashboardPageState extends State<DashboardPage> {
     /*if (!mounted) return barcodeScanRes;
     return barcodeScanRes;*/
   }
+
   @override
   Widget build(BuildContext context) {
     return GetBuilder<DashboardController>(
@@ -62,32 +67,64 @@ class _DashboardPageState extends State<DashboardPage> {
                           color: Colors.white,
                           fontWeight: FontWeight.w800,
                           fontSize: 16)),
-                  buscar ? Expanded(child: Buscador(dashboardController: controller, function: changeBuscar, scaffoldKey: scaffoldKey)) :
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      IconButton(icon: const Icon(CupertinoIcons.search), onPressed: changeBuscar),
-                      IconButton(icon: const Icon(CupertinoIcons.barcode), onPressed: () async{
-                        _scanBarcode = await scanBarcodeNormal();
-                        controller.query = "Conincidencias con : $_scanBarcode";
-                        controller.consultarArticulosCodBarra(_scanBarcode);
-                      }),
-                    ],
-                  ),
+                  buscar
+                      ? Expanded(
+                          child: Buscador(
+                              dashboardController: controller,
+                              function: changeBuscar,
+                              scaffoldKey: scaffoldKey))
+                      : Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            IconButton(
+                                icon: const Icon(CupertinoIcons.search),
+                                onPressed: changeBuscar),
+                            IconButton(
+                                icon: const Icon(CupertinoIcons.barcode),
+                                onPressed: () async {
+                                  _scanBarcode = await scanBarcodeNormal();
+                                  controller.query =
+                                      "Conincidencias con : $_scanBarcode";
+                                  controller
+                                      .consultarArticulosCodBarra(_scanBarcode);
+                                }),
+                            IconButton(
+                                icon: const Icon(CupertinoIcons.add_circled),
+                                onPressed: () {
+                                  Navigator.of(context).push(PageRouteBuilder(
+                                      transitionDuration:
+                                          const Duration(milliseconds: 1000),
+                                      pageBuilder: (context, animated, _) {
+                                        return FadeTransition(
+                                            opacity: animated,
+                                            child: ArticuloDetails(
+                                                isShow: false,
+                                                isRegister: true,
+                                                isEditing: false,
+                                                isPostRegister: false,
+                                                articulo: IntArticulo(),
+                                                dashboardController: controller,
+                                                onArticuloAdded: () {
+                                                  /*articuloProvider
+                                      .addArticuloCarrito(articulo);*/
+                                                  debugPrint(
+                                                      "para agregar en el carrito");
+                                                }));
+                                      }));
+                                }),
+                          ],
+                        ),
                 ],
               ),
             ),
             // drawer: MenuDraw(function: controller.changeTabIndex),
             body: SafeArea(
                 child: Center(
-                    child: IndexedStack(
-                        index: controller.tabIndex,
-                        children: [
-                          HomePage(dashboardController: controller),
-                          AccountPage(dashboardController: controller)
-                        ]
-                    ))),
+                    child: IndexedStack(index: controller.tabIndex, children: [
+              HomePage(dashboardController: controller),
+              AccountPage(dashboardController: controller)
+            ]))),
             bottomNavigationBar: BottomNavigationBar(
               elevation: 0,
               selectedItemColor: Colors.teal,
@@ -106,6 +143,7 @@ class _DashboardPageState extends State<DashboardPage> {
           );
         });
   }
+
   _bottomNavigationBarItem(IconData iconData, String labelData) {
     return BottomNavigationBarItem(icon: Icon(iconData), label: labelData);
   }

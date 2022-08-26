@@ -9,7 +9,7 @@ class EmpresaLocalController{
 
   void insert(Empresa empresa) async{
     final id = await dbHelper.insert(table, empresa.toMap());
-    debugPrint('inserted row id: $id');
+    debugPrint('inserted row id: ${id.toString()}');
   }
 
   Future<void> update(Empresa empresa) async{
@@ -42,7 +42,6 @@ class EmpresaLocalController{
   Future<Empresa> getFirstEmpresa() async{
     final allRows = await dbHelper.queryAllRows(table);
     dynamic first = allRows.first;
-    debugPrint(first);
     Empresa empresa = Empresa.fromMap(first);
     return empresa;
   }

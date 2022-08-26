@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Administrador Fpl',
-      initialRoute: AppRoutes.DASHBOARD,
+      initialRoute: AppRoutes.dashboard,
       getPages: AppPages.list,
       darkTheme: AppThemes.dark,
       themeMode: ThemeMode.system,

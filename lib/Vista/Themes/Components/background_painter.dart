@@ -1,4 +1,7 @@
+// ignore_for_file: prefer_typing_uninitialized_variables
+
 import 'dart:math';
+import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:proyectoadmfpl/Vista/Themes/config.dart';
 
@@ -53,15 +56,15 @@ class BackgroundPainter extends CustomPainter {
     path.moveTo(size.width, size.height / 2);
     path.lineTo(size.width, 0);
     path.lineTo(0, 0);
-    /*path.lineTo(0, lerpDouble(0, size.height, blueAnim.value));
+    path.lineTo(0, lerpDouble(0, size.height, blueAnim.value)!.toDouble());
     _addPointsToPath(path, [
-      Point(lerpDouble(0, size.width / 3, blueAnim.value),
-          lerpDouble(0, size.height, blueAnim.value)),
-      Point(lerpDouble(size.width / 2, size.width / 4 * 3, liquiAnim.value),
-          lerpDouble(size.height / 2, size.height / 4 * 3, liquiAnim.value)),
+      Point(lerpDouble(0, size.width / 3, blueAnim.value)!.toDouble(),
+          lerpDouble(0, size.height, blueAnim.value)!.toDouble()),
+      Point(lerpDouble(size.width / 2, size.width / 4 * 3, liquiAnim.value)!.toDouble(),
+          lerpDouble(size.height / 2, size.height / 4 * 3, liquiAnim.value)!.toDouble()),
       Point(size.width,
-          lerpDouble(size.height / 2, size.height * 3 / 4, liquiAnim.value)),
-    ]);*/
+          lerpDouble(size.height / 2, size.height * 3 / 4, liquiAnim.value)!.toDouble()),
+    ]);
     canvas.drawPath(path, bluePaint);
   }
 
@@ -70,18 +73,18 @@ class BackgroundPainter extends CustomPainter {
     path.moveTo(size.width, 300);
     path.lineTo(size.width, 0);
     path.lineTo(0, 0);
-    /*path.lineTo(
-        0, lerpDouble(size.height / 4, size.height / 2, greyAnim.value));
+    path.lineTo(
+        0, lerpDouble(size.height / 4, size.height / 2, greyAnim.value)!.toDouble());
     _addPointsToPath(path, [
       Point(size.width / 4,
-          lerpDouble(size.height / 2, size.height * 3 / 4, liquiAnim.value)),
+          lerpDouble(size.height / 2, size.height * 3 / 4, liquiAnim.value)!.toDouble()),
       Point(size.width * 3 / 5,
-          lerpDouble(size.height / 4, size.height / 2, liquiAnim.value)),
+          lerpDouble(size.height / 4, size.height / 2, liquiAnim.value)!.toDouble()),
       Point(size.width * 4 / 5,
-          lerpDouble(size.height / 6, size.height / 3, greyAnim.value)),
+          lerpDouble(size.height / 6, size.height / 3, greyAnim.value)!.toDouble()),
       Point(size.width,
-          lerpDouble(size.height / 5, size.height / 4, greyAnim.value)),
-    ]);*/
+          lerpDouble(size.height / 5, size.height / 4, greyAnim.value)!.toDouble()),
+    ]);
     canvas.drawPath(path, greeyPaint);
   }
 
@@ -90,17 +93,17 @@ class BackgroundPainter extends CustomPainter {
       final path = Path();
       path.moveTo(size.width * 3 / 4, 0);
       path.lineTo(0, 0);
-      /*path.lineTo(0, lerpDouble(0, size.height / 12, orangeAnim.value));
+      path.lineTo(0, lerpDouble(0, size.height / 12, orangeAnim.value)!.toDouble());
       _addPointsToPath(path, [
-        Point(size.width / 7, lerpDouble(0, size.height / 6, liquiAnim.value)),
-        Point(size.width / 3, lerpDouble(0, size.height / 10, liquiAnim.value)),
+        Point(size.width / 7, lerpDouble(0, size.height / 6, liquiAnim.value)!.toDouble()),
+        Point(size.width / 3, lerpDouble(0, size.height / 10, liquiAnim.value)!.toDouble()),
         Point(size.width / 3 * 2,
-            lerpDouble(0, size.height / 10, greyAnim.value)),
+            lerpDouble(0, size.height / 10, greyAnim.value)!.toDouble()),
         Point(
           size.width * 3 / 4,
           0,
         )
-      ]);*/
+      ]);
       canvas.drawPath(path, orangePaint);
     }
   }
